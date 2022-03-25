@@ -1,30 +1,33 @@
-<div class="container mt-4">
-  <div class="container-content">
-    <% if @top_streams.present? %>
-      <div class="body-content">
-        <h3 class="text-center">What's trending today...</h3>
-        <% @top_streams.in_groups_of(3, false).each do |stream_group| %>
-          <div class="row mb-5">
-            <% stream_group.each do |stream| %>
-              <div class="col-sm-4">
-                <div class="card text-white">
-                  <div class="card-body">
-                    <div class="card-header bg-secondary">
-                      <%= stream['game_name'].titleize %>
-                      <span class="badge bg-danger"><%= stream['type'] %></span>  
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Broadcaster: <%= stream['user_name'] %></li>
-                      <li class="list-group-item">Viewers: <%= stream['viewer_count'] %></li>
-                      <li class="list-group-item">Streaming Since: <%= stream['started_at'] %></li>
-                    </ul>
+<% if user_signed_in? %>
+  <% if @top_streams.present? %>
+    <div class="body-content">
+      <h3 class="text-center">What's trending today...</h3>
+      <% @top_streams.in_groups_of(3, false).each do |stream_group| %>
+        <div class="row mb-5">
+          <% stream_group.each do |stream| %>
+            <div class="col-sm-4">
+              <div class="card text-white">
+                <div class="card-body">
+                  <div class="card-header bg-secondary">
+                    <%= stream['game_name'].titleize %>
+                    <span class="badge bg-danger"><%= stream['type'] %></span>  
                   </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Broadcaster: <%= stream['user_name'] %></li>
+                    <li class="list-group-item">Viewers: <%= stream['viewer_count'] %></li>
+                    <li class="list-group-item">Streaming Since: <%= stream['started_at'] %></li>
+                  </ul>
                 </div>
               </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <center>
+    <h3>Hello World!!!</h3>
+    <p>Please Login/Sign Up to proceed..</p>
+  </center>
+<% end %>

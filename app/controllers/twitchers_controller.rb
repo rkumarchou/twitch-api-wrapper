@@ -1,4 +1,6 @@
 class TwitchersController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     query_params = { query: search_params[:query] }
     endpoint = "search/channels?#{query_params.to_query}"

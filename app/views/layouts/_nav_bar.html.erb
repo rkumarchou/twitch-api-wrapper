@@ -1,9 +1,15 @@
 <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container-fluid justify-content-end">
     <a class="navbar-brand" href="/">Twitch Wrapper</a>
-    <%= form_tag search_path, { class: "d-flex", method: :post, remote: true } do %>
-      <%= text_field_tag "query", "", class: "form-control me-2", placeholder: "Looking for a twitcher?..." %>
-      <%= submit_tag "Search", class: "btn btn-outline-success" %>
+    <% if user_signed_in? %>
+      <%= form_tag search_path, { class: "d-flex me-2", method: :post, remote: true } do %>
+        <%= text_field_tag "query", "", class: "form-control me-2", placeholder: "Looking for a twitcher?..." %>
+        <%= submit_tag "Search", class: "btn btn-outline-success" %>
+      <% end %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "Sign up", new_registration_path(:user), class: "btn btn-outline-primary me-2" %>
+      <%= link_to "Log in", new_session_path(:user), class: "btn btn-outline-primary" %>
     <% end %>
   </div>
 </nav>

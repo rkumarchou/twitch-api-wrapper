@@ -11,6 +11,11 @@
 
   <body>
     <%= render partial: 'layouts/nav_bar' %>
-    <%= yield %>
+    <div class="container mt-4">
+      <div class="container-content">
+        <%= render 'shared/flash_messages' %>
+        <%= yield %>
+      </div>
+    </div>    
   </body>
 </html>
