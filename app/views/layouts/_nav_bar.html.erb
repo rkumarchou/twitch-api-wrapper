@@ -1,0 +1,9 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Twitch Wrapper</a>
+    <%= form_tag search_path, { class: "d-flex", method: :post, remote: true } do %>
+      <%= text_field_tag "query", "", class: "form-control me-2", placeholder: "Looking for a twitcher?..." %>
+      <%= submit_tag "Search", class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
+</nav>

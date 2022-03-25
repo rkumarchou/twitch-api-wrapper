@@ -1,0 +1,5 @@
+<% if @channels.present? %>
+  $('.body-content').html("<%= j render partial: 'channels' %>");
+<% else %>
+  $('.body-content').html("No results found...");
+<% end %>

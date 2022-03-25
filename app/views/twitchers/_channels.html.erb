@@ -1,0 +1,23 @@
+<h3 class="text-center">We found something...</h3>
+<% @channels.in_groups_of(3, false).each do |channel_group| %>
+  <div class="row mb-5">
+    <% channel_group.each do |channel| %>
+      <div class="col-sm-4">
+        <div class="card text-white">
+          <div class="card-body">
+            <div class="card-header bg-success">
+              <%= channel['display_name'].titleize %>
+              <span class="badge bg-danger"><%= 'live' if channel['is_live'].present? %></span>  
+              <span class="badge bg-warning"><%= 'In Top 20' if channel['in_top_20'] %></span>  
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Broadcasting Game: <%= channel['game_name'] %></li>
+              <li class="list-group-item">Language: <%= channel['broadcaster_language'] %></li>
+              <li class="list-group-item">Streaming Since: <%= channel['started_at'] %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

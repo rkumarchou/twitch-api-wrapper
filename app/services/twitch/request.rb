@@ -3,7 +3,7 @@ module Twitch
 
     attr_reader :endpoint
 
-    def initialize(endpoint = 'games/top')
+    def initialize(endpoint = 'streams')
       @endpoint = endpoint
       super()
     end
