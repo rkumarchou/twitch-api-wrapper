@@ -1,16 +1,23 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid justify-content-end">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
     <a class="navbar-brand" href="/">Twitch Wrapper</a>
-    <% if user_signed_in? %>
-      <%= form_tag search_path, { class: "d-flex me-2", method: :post, remote: true } do %>
-        <%= text_field_tag "query", "", class: "form-control me-2", placeholder: "Looking for a twitcher?..." %>
-        <%= submit_tag "Search", class: "btn btn-outline-success" %>
-      <% end %>
-      <%= link_to "History", history_path, class: "btn btn-outline-primary me-2" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-    <% else %>
-      <%= link_to "Sign up", new_registration_path(:user), class: "btn btn-outline-primary me-2" %>
-      <%= link_to "Log in", new_session_path(:user), class: "btn btn-outline-primary" %>
-    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse ">
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "Search", search_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "History", history_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign up", new_registration_path(:user), class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log in", new_session_path(:user), class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
+
+

@@ -3,13 +3,21 @@ class TwitchersController < ApplicationController
   after_action :log_to_paper_trail
 
   def search
-    query_params = { query: search_params[:query] }
+  end
+
+  def results
+    if search_params[:query].blank?
+      @channels = []
+      return
+    end
+
+    query_params = { query: search_params[:query] }    
     endpoint = "search/channels?#{query_params.to_query}"
 
-    response = Twitch::Request.new(endpoint).call
+    @response = Twitch::Request.new(endpoint).call
 
-    if response.success?
-      @channels = response.data 
+    if @response.success?
+      @channels = @response.data
       check_for_top_postions
     end
   end
