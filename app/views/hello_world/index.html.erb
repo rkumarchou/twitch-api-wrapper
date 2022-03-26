@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-  <% if @top_streams.present? %>
-    <div class="body-content">
+  <div class="body-content">
+    <% if @top_streams.present? %>
       <h3 class="text-center">What's trending today...</h3>
       <% @top_streams.in_groups_of(3, false).each do |stream_group| %>
         <div class="row mb-5">
@@ -23,8 +23,8 @@
           <% end %>
         </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% else %>
   <center>
     <h3>Hello World!!!</h3>
