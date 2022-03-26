@@ -1,6 +1,7 @@
 class HelloWorldController < ApplicationController
   def index
     if user_signed_in?
+
       response = Twitch::Request.new.call
 
       @top_streams = response.data if response.success?
