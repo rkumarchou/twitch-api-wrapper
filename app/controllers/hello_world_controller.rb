@@ -4,7 +4,7 @@ class HelloWorldController < ApplicationController
 
       response = Twitch::Request.new.call
 
-      @top_streams = response.data if response.success?
+      @top_streams = response.data["data"] if response.success?
     end
   end
 end

@@ -1,16 +1,15 @@
 <h2>History</h2>
-<ul>
-  <% @versions.each do |version| %>
-    <li>
-      <%= l(version.created_at, format: "%-d.%m.%Y %H:%M:%S %Z") %><br/>
-      <b>Event ID: </b> <%= version.id %><br/>
-      <b>Target: </b> <%= version.item_type %>
-      <small>(id: <%= version.item_id %>)</small>;<br/>
-      <b>Action: </b> <%= version.event %>;<br/>
-      <div>
-        <b>More info:</b>
-        <pre><%= version.object %></pre>
-      </div>
-    </li>
-  <% end %>
-</ul>
+
+<%@versions.each do |version|%> 
+  <div class="card">
+    <div class="card-header">
+      <b>Search Query</b>: <%= version.query%>
+      <div class="float-right"><%= version.updated_at.strftime("%d %b %Y at %I:%M%p") %></div>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Results.</p>
+      <%= render partial: 'twitchers/channels', locals: {streams: version.results} %>
+    </div>
+  </div>
+  
+<%end%>

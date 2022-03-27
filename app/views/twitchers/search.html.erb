@@ -1,11 +1,15 @@
 <div class="row">
-  <div class="col-md-5 mx-auto">  
-    <%= form_tag search_results_path, { class: "d-flex me-2", method: :post, remote: true } do %>
+  <div class="col-md-8 mx-auto">  
+    <%= form_tag search_results_path, { id: "search-result-form" ,class: "d-flex me-2", method: :post, remote: true } do %>
       <div class="input-group">
         <%= text_field_tag "query", "", class: "form-control border", placeholder: "Looking for a twitcher?...", autocomplete: :off, required: true %>
-        <%= button_tag type: :submit, id: "search-twitcher", class: "btn btn-outline-success" do %>
+        <%= button_tag value: "search" ,type: :submit, id: "search-twitcher", class: "btn btn-outline-primary" do %>
           <i class="fa-solid fa-magnifying-glass"></i> Search
         <%end%>
+        <%= button_tag value: "feeling_lucky" ,type: :submit, id: "search-twitcher", class: "btn btn-success" do %>
+          <i class="fa-solid fa-gift"></i> I am feeling lucky
+        <%end%>
+
         </div>
     <% end %>
   </div>
@@ -13,6 +17,8 @@
 
 <div class="row">
   <div id="results">
+    
+
   </div>
 </div>
 

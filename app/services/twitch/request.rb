@@ -4,7 +4,8 @@ module Twitch
     attr_reader :endpoint
 
     def initialize(endpoint = 'streams')
-      @endpoint = endpoint
+      # check if endpoint is nil
+      @endpoint = endpoint || 'streams' 
       super()
     end
 
@@ -12,10 +13,11 @@ module Twitch
 
     def perform
       response = Client.new.call(endpoint).get
-
       if response.code == 200
-        @data = JSON.parse(response.body)["data"]
+        @data = JSON.parse(response.body) #["data"]
       else
+        Rails.logger.error response.errors
+        # Do not expose backend error to UI
         @errors << 'Something went wrong.'
       end
     rescue RestClient::Exceptions::Timeout

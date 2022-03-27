@@ -1,6 +1,6 @@
 <% if @response.success? %>
   <% if @response.try(:data).try(:"present?") %>
-    $('#results').html("<%= j render partial: 'channels' %>");
+    $('#results').html("<h3 class='text-center'>We found something...</h3><%= j render partial: 'channels', locals: {streams: @streams} %>");
   <% else %>
     $('#results').html("<div class='text-center mt-4'>No results found...</div>");
   <% end %>
