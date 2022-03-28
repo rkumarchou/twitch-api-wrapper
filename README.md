@@ -10,6 +10,7 @@
 * Install ruby-2.7.0'
 * Run the command `bundle install`
 * Run the command `rails dev:cache` to enable caching in dev environment.
+* Add `master.key` file in `config` folder.
 * Run the test suite using `rspec` to confirm if the setup is successful.
 * Start the rails server using `rails s`
 * Test the application by visiting http://localhost:3000/
