@@ -22,13 +22,13 @@ describe Twitch::Request do
 
       context 'streams endpoint' do
         it 'returns correct data in response' do
-          expect(subject).to eq body['data']
+          expect(subject).to eq body
         end
       end
     end
 
     context 'when response code is not 200' do
-      let(:response) { double(code: 404) }
+      let(:response) { double(code: 404, errors: ['Invalid Request']) }
 
       it 'returns error message in response' do
         expect(subject).to eq ['Something went wrong.']

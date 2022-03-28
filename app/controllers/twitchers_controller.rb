@@ -31,7 +31,6 @@ class TwitchersController < ApplicationController
     response = Twitch::Request.new(feeling_lucky).call
     return unless response.success?    
     @streams = response.data["data"]
-    
 
     @last_pagination = response.data["pagination"].key?("cursor") ? response.data["pagination"]["cursor"] : ""
     broadcaster_login = @channels.map { |s| s['broadcaster_login'] }

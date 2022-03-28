@@ -9,7 +9,7 @@ describe HelloWorldController do
     context 'when user is logged in' do
       let(:streams_data) do
         data = File.read(File.join(Rails.root, 'spec', 'fixtures', 'streams.json'))
-        JSON.parse(data)['data']
+        JSON.parse(data)
       end
 
       let(:twitch_response) { Result.new(data: streams_data, errors: []) }
@@ -30,7 +30,7 @@ describe HelloWorldController do
       it 'sets top_streams' do
         get 'index'
 
-        expect(assigns[:top_streams]).to eq(streams_data)
+        expect(assigns[:top_streams]).to eq(streams_data['data'])
       end
     end
 

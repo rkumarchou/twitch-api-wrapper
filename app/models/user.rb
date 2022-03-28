@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :validatable
 
   def history_ids
-    search_histories.pluck(:results).flatten.map { |t| t["id"] }.try(:uniq)
+    search_histories.pluck(:results).flatten.compact.map { |t| t["id"] }.try(:uniq)
   end
 
   # return search histories for a user, for a given query
