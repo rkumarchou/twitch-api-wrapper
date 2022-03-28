@@ -5,21 +5,17 @@
         <%= text_field_tag "query", "", class: "form-control border", placeholder: "Looking for a twitcher?...", autocomplete: :off, required: true %>
         <%= button_tag value: "search" ,type: :submit, id: "search-twitcher", class: "btn btn-outline-primary" do %>
           <i class="fa-solid fa-magnifying-glass"></i> Search
-        <%end%>
+        <% end %>
         <%= button_tag value: "feeling_lucky" ,type: :submit, id: "search-twitcher", class: "btn btn-success" do %>
           <i class="fa-solid fa-gift"></i> I am feeling lucky
-        <%end%>
-
-        </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
 
 <div class="row">
-  <div id="results">
-    
-
-  </div>
+  <div id="results"></div>
 </div>
 
 <!-- Loader -->

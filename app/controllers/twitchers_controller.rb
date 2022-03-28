@@ -1,8 +1,7 @@
 class TwitchersController < ApplicationController
   before_action :authenticate_user!
 
-  def search
-  end
+  def search; end
 
   def results
     if search_params[:query].blank?
@@ -54,12 +53,12 @@ class TwitchersController < ApplicationController
   # https://discuss.dev.twitch.tv/t/helix-video-request-not-returning-pagination-cursor-field/18199
   def feeling_lucky
     if params[:button] == "feeling_lucky"
-      pagination = current_user.search_histories_by_query(search_params[:query]).try(:last_pagination)
-      query = {after: pagination, first: 40}
+      pagination = current_user.search_histories_by_query(search_params[:query])&.last_pagination
+      query = { after: pagination, first: 40 }
     else
-      query = {first: 20}
+      query = { first: 20 }
     end
-    return "streams?#{query.to_query}"    
+    "streams?#{query.to_query}"    
   end
 
   # From perfomance perspective this is not the best solution, all these records should be cached/stored into a NoSQL database

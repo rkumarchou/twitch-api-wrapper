@@ -20,18 +20,7 @@ window.jQuery = $
 window.$ = $
 
 import 'bootstrap'
-import '../stylesheets/application'
 import "@fortawesome/fontawesome-free/css/all";
 
-$( document ).ready(function() {
-    $("#search-twitcher").click(function(){
-        let query = $("#query").val();
-        if(query.trim()){
-            $("#results").html('');
-            $("#loading-results").show();
-        }else{
-            $("#loading-results").hide();
-        }
-    })
-    
-});
+import '../stylesheets/application'
+import './search'

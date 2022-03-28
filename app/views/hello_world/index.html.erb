@@ -15,10 +15,10 @@
         </thead>
         <tbody>    
           <% @top_streams.each do |stream| 
-            is_live = stream['is_live'].present?%>
-            <tr class="<%= is_live && 'table-success'%>">
+            is_live = stream['is_live'].present? %>
+            <tr class="<%= is_live && 'table-success' %>">
               <td>
-                <%= image_tag(thumbnail_url(stream['thumbnail_url']), size: "50x50")%>
+                <%= image_tag(thumbnail_url(stream['thumbnail_url']), size: "50x50") %>
                 <%= stream['game_name'].titleize %>
                 <span class="badge bg-danger"><%= stream['type'].capitalize %></span>  
               </td>
@@ -27,7 +27,7 @@
               <td><%= stream['language'] %></td>
               <td><%= formated_time(stream['started_at']) %></td>
             </tr>  
-          <%end%>
+          <% end %>
         </tbody>
       </table>
     <% end %>
